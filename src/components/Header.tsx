@@ -6,38 +6,39 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigationItems = [
-    { name: 'الرئيسية', href: '#home' },
-    { name: 'من نحن', href: '#about' },
-    { name: 'خدماتنا', href: '#services' },
-    { name: 'مميزاتنا', href: '#features' },
-    { name: 'آراء العملاء', href: '#testimonials' },
-    { name: 'تواصل معنا', href: '#contact' },
+    { name: 'الرئيسية', href: '#home', icon: 'fas fa-home' },
+    { name: 'من نحن', href: '#about', icon: 'fas fa-users' },
+    { name: 'خدماتنا', href: '#services', icon: 'fas fa-stethoscope' },
+    { name: 'مميزاتنا', href: '#features', icon: 'fas fa-star' },
+    { name: 'آراء العملاء', href: '#testimonials', icon: 'fas fa-comments' },
+    { name: 'تواصل معنا', href: '#contact', icon: 'fas fa-phone' },
   ];
 
   return (
     <header className="bg-white/95 backdrop-blur-sm shadow-md fixed top-0 w-full z-40">
       <div className="container-max">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-3 sm:py-4">
           {/* Logo */}
           <div className="flex items-center space-x-2 space-x-reverse">
-            <div className="w-10 h-10 bg-medical-teal rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">FS</span>
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-medical-teal rounded-lg flex items-center justify-center">
+              <i className="fas fa-hospital-user text-white text-lg sm:text-xl"></i>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-medical-dark">Family Scan</h1>
-              <p className="text-xs text-medical-blue">خدمة فحوصات منزلية</p>
+              <h1 className="text-lg sm:text-xl font-bold text-medical-dark">Family Scan</h1>
+              <p className="text-xs text-medical-blue hidden sm:block">خدمة فحوصات منزلية</p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 space-x-reverse">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 space-x-reverse">
             {navigationItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-medical-blue transition-colors duration-300 font-medium"
+                className="text-gray-700 hover:text-medical-blue transition-colors duration-300 font-medium flex items-center space-x-2 space-x-reverse group"
               >
-                {item.name}
+                <i className={`${item.icon} text-sm group-hover:scale-110 transition-transform duration-300`}></i>
+                <span>{item.name}</span>
               </a>
             ))}
           </nav>
@@ -46,7 +47,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="lg:hidden"
+            className="lg:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="flex flex-col space-y-1">
@@ -65,10 +66,11 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-medical-blue transition-colors duration-300 font-medium py-2"
+                  className="text-gray-700 hover:text-medical-blue transition-colors duration-300 font-medium py-2 flex items-center space-x-3 space-x-reverse"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.name}
+                  <i className={`${item.icon} text-medical-blue`}></i>
+                  <span>{item.name}</span>
                 </a>
               ))}
             </nav>
